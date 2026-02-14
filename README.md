@@ -1,7 +1,7 @@
 # Web-security-learning-notes-
 My conceptual learning notes from web security labs and vulnerability research.
 
-##Topics Covered
+#Topics Covered
 - Access Control
 - Authentication
 - SQL Injection
