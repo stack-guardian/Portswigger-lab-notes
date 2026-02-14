@@ -1,4 +1,4 @@
-Category:User account access controlled through request parameters using unpredictable user identifiers.
+Category: User id controlled by request parameters, using unpredictable user IDs. 
 
 Issue:Horizontal privilege escalation vulnerability caused by missing server-side authorization checks. The application exposes user account data through direct object references without validating ownership of the requested resource.
 
