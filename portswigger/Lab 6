@@ -1,0 +1,9 @@
+Category:User account access controlled through request parameters using unpredictable user identifiers.
+
+Issue:Horizontal privilege escalation vulnerability caused by missing server-side authorization checks. The application exposes user account data through direct object references without validating ownership of the requested resource.
+
+Attack:The attacker intercepted an HTTP request and modified the user identifier parameter, changing the account reference from wiener to carlos, allowing unauthorized access to another user's account data.
+
+Technical Failure:The server relied on client-supplied identifiers and failed to implement object-level access control validation. No verification was performed to ensure that the authenticated user was authorized to access the requested account information.
+
+Impact:Attackers can horizontally access other users’ sensitive information by manipulating request parameters, leading to unauthorized data exposure and compromise of account confidentiality.
