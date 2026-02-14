@@ -1,18 +1,18 @@
 Lab 2: Unprotected admin functionality with unpredictable URL
 
-## Category
+Category
 Broken Access Control – Vertical Privilege Escalation
 
-## Core Issue
+ Core Issue
 Administrative functionality was exposed through a JavaScript file and accessible directly without proper server-side authorization checks.
 
-## Attack Strategy
+ Attack Strategy
 Reviewed client-side JavaScript to identify hidden administrative endpoints. 
 Accessed the discovered admin URL directly to reach privileged functionality.
 
-## Technical Failure
+ Technical Failure
 Backend failed to enforce role-based access control on sensitive endpoints. 
 Application relied on obscurity rather than authorization validation.
 
-## Impact (Real World Context)
+ Impact (Real World Context)
 Attackers could access administrative panels and perform privileged actions such as deleting user accounts.
