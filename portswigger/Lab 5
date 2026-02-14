@@ -1,4 +1,4 @@
-Category:User account access controlled through a client-side request parameter containing the user identifier.
+Category: User ID controlled by request parameters. 
 
 Issue:Broken access control vulnerability due to missing server-side authorization checks. The application retrieves account data directly based on a user identifier supplied in the request without validating whether the authenticated user owns the requested resource.
 
