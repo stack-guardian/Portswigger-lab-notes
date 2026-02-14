@@ -1,0 +1,9 @@
+Category:User account access controlled through a client-side request parameter containing the user identifier.
+
+Issue:Broken access control vulnerability due to missing server-side authorization checks. The application retrieves account data directly based on a user identifier supplied in the request without validating whether the authenticated user owns the requested resource.
+
+Attack:The attacker logged into their own account and intercepted the HTTP request used to access account information. By modifying the user identifier parameter from their own account (wiener) to another user (carlos), the attacker successfully accessed unauthorized account data.
+
+Technical Failure:The server trusted client-controlled input and failed to enforce object-level authorization validation. No verification was performed to confirm that the authenticated user was permitted to access the requested account, resulting in an Insecure Direct Object Reference (IDOR) vulnerability.
+
+Impact:Attackers can access sensitive information belonging to other users by manipulating request parameters, leading to unauthorized data exposure, privacy violations, and potential account compromise.
