@@ -1,0 +1,11 @@
+LAB 12 
+
+Issue:The application implements a multi-step process for upgrading a user’s role. While the initial step performs authorization checks, the final confirmation step does not properly verify whether the requester has administrative privileges.
+
+Attack:The attacker logs in as a low-privileged user (wiener) and initiates the role upgrade process. By intercepting the final confirmation request (which includes the confirmed=true parameter) and sending it directly, the attacker bypasses the authorization logic and upgrades their own account to administrator.
+
+Technical Failure:The backend fails to enforce access control consistently across all steps of the workflow. The confirmation endpoint processes privileged role modifications without validating the user's authorization level.
+
+This represents a server-side authorization validation flaw in the final step of the multi-step process.
+
+Impact:A low-privileged user can escalate their privileges to administrator. This can lead to full compromise of administrative functionality, including account management and sensitive operations.
