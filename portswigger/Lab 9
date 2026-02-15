@@ -1,0 +1,9 @@
+Category:Broken Access Control — Insecure Direct Object Reference (IDOR) leading to sensitive information disclosure.
+
+Issue:The application exposes chat transcripts through a predictable or manipulatable object reference without validating whether the authenticated user is authorized to access the requested transcript. As a result, historical chat conversations containing sensitive information are accessible.
+
+Attack:The attacker intercepted the request used to retrieve a chat transcript and modified the object reference parameter to access another user’s transcript (Carlos). The response contained older conversation data, including sensitive information such as login credentials.
+
+Technical Failure:The server failed to implement object-level authorization checks when serving transcript data. It trusted client-controlled identifiers and did not verify ownership of the requested resource before returning the transcript.
+
+Impact:An attacker can retrieve confidential user conversations, including sensitive credentials, resulting in account compromise and unauthorized access to the victim’s account.
