@@ -1,0 +1,9 @@
+Category:Broken Access Control — Improper Enforcement of URL-Based Authorization Controls.
+
+Issue:The application attempts to restrict access to administrative functionality by blocking direct access to specific URLs. However, access control enforcement is performed inconsistently, allowing the restriction to be bypassed through manipulated HTTP headers.
+
+Attack:The attacker intercepted a request to a restricted administrative endpoint using Burp Suite. Although direct access to the /admin URL was blocked, the attacker modified the HTTP request headers (such as adding or manipulating X-Original-URL or similar headers). The backend server processed the request based on the modified header and granted unauthorized access to the administrative functionality.
+
+Technical Failure:The application relied on front-end or proxy-level URL filtering instead of implementing strict server-side authorization checks. The backend trusted header values supplied by the client and failed to validate whether the authenticated user had sufficient privileges to access the protected resource.
+
+Impact:An attacker can bypass access restrictions and gain unauthorized access to administrative endpoints. This may allow sensitive operations such as deleting users, modifying data, or compromising the application’s integrity.
