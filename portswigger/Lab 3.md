@@ -1,5 +1,6 @@
-LAB 3 — User Role Controlled by Request Parameter
-Category
+# LAB 3 — User Role Controlled by Request Parameter
+
+## Category
 
 Broken Access Control
 
@@ -7,27 +8,27 @@ Vertical Privilege Escalation
 
 Parameter Tampering
 
-Vulnerability Description
+## Vulnerability Description
 
 The application relied on a client-controlled request parameter to determine administrative privileges. Authorization decisions were made using user-supplied data without server-side validation.
 
-Attack Methodology
+## Attack Methodology
 
 1.Intercepted authenticated request using Burp Suite.
 
 2.Identified privilege parameter in request.
 
-3.Modified authorization value from: admin - false to admin - true 
+3.Modified authorization value from: admin - false to admin - true
 
 4.Forwarded request to server.
 
 5.Application granted administrative access.
 
-Technical Root Cause
+## Technical Root Cause
 
 Authorization logic was implemented on the client side instead of being enforced securely on the server. The server trusted modified request parameters.
 
-Impact
+## Impact
 
 1.Unauthorized administrative access
 
@@ -35,7 +36,7 @@ Impact
 
 3.Ability to perform sensitive operations
 
-Security Recommendation
+## Security Recommendation
 
 1.Implement server-side authorization checks
 
