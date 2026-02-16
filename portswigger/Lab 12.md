@@ -1,11 +1,21 @@
-# LAB 12
+# Lab 12: Broken Access Control in Multi-Step Process
 
-## Issue:The application implements a multi-step process for upgrading a user’s role. While the initial step performs authorization checks, the final confirmation step does not properly verify whether the requester has administrative privileges.
+## 🏷️ Category
+Broken Access Control – Workflow Bypass
 
-## Attack:The attacker logs in as a low-privileged user (wiener) and initiates the role upgrade process. By intercepting the final confirmation request (which includes the confirmed=true parameter) and sending it directly, the attacker bypasses the authorization logic and upgrades their own account to administrator.
+---
 
-## Technical Failure:The backend fails to enforce access control consistently across all steps of the workflow. The confirmation endpoint processes privileged role modifications without validating the user's authorization level.
+## 🛡️ Vulnerability Description
+The application uses a multi-step process for sensitive actions (e.g., upgrading a user). While initial steps might have authorization checks, the final confirmation step does not, allowing it to be called directly.
 
-This represents a server-side authorization validation flaw in the final step of the multi-step process.
+## 🚀 Attack Strategy
+1. **Process Initiation**: Started the role upgrade process as a low-privileged user.
+2. **Interception**: Captured the final "confirmation" request.
+3. **Direct Execution**: Sent the final request (e.g., `confirmed=true`) directly to the server, bypassing the initial authorization checks in the earlier steps.
+4. **Elevation**: Successfully upgraded the account to administrator.
 
-## Impact:A low-privileged user can escalate their privileges to administrator. This can lead to full compromise of administrative functionality, including account management and sensitive operations.
+## 🔍 Technical Root Cause
+The backend failed to enforce access control consistently across all steps of a stateful workflow. It assumed that reaching the final step implied the previous steps were successfully and legitimately completed.
+
+## 💥 Impact
+Vertical privilege escalation, allowing low-privileged users to gain full administrative control.

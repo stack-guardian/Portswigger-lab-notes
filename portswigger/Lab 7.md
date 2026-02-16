@@ -1,9 +1,20 @@
-# Category:Horizontal Privilege Escalation via Insecure Direct Object Reference (IDOR) with sensitive data disclosure in HTTP redirect response.
+# Lab 7: Horizontal Privilege Escalation via IDOR with Sensitive Data Disclosure
 
-## Issue:The application exposes user account data based on a client-controlled identifier parameter and improperly includes sensitive information in the HTTP redirect response. The server fails to enforce proper object-level authorization checks before processing the request.
+## 🏷️ Category
+Insecure Direct Object Reference (IDOR)
 
-## Attack:The attacker logged into a legitimate account and intercepted the account-related HTTP request using Burp Suite. By modifying the user identifier parameter from wiener to carlos, the attacker triggered a server response that redirected while leaking sensitive information (Carlos’ API key) in the redirect response.
+---
 
-## Technical Failure:The backend application relied on client-supplied user identifiers and failed to verify ownership of the requested resource. Additionally, sensitive data was included in the redirect response without proper validation, resulting in information disclosure.
+## 🛡️ Vulnerability Description
+The application leaks sensitive information in an HTTP redirect response. It fails to enforce proper object-level authorization checks before processing requests for account-specific resources.
 
-## Impact:An attacker can access another user's API key through manipulated request parameters, leading to unauthorized data exposure and potential account compromise.
+## 🚀 Attack Strategy
+1. **Interception**: Logged into a legitimate account (`wiener`) and intercepted the account-related request.
+2. **Manipulation**: Changed the user identifier from `wiener` to `carlos`.
+3. **Leaked Data**: Observed that the server responded with a redirect, but the body of the response (or headers) contained sensitive data, such as Carlos' API key.
+
+## 🔍 Technical Root Cause
+The backend failed to verify resource ownership. Furthermore, the application logic improperly included sensitive data in a response that was intended to be a simple redirect.
+
+## 💥 Impact
+An attacker can steal sensitive credentials (like API keys) belonging to other users, leading to full account compromise.

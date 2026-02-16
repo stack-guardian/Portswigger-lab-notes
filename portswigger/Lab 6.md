@@ -1,9 +1,20 @@
-# Category: User id controlled by request parameters, using unpredictable user IDs.
+# Lab 6: User ID Controlled by Request Parameters (Unpredictable IDs)
 
-## Issue:Horizontal privilege escalation vulnerability caused by missing server-side authorization checks. The application exposes user account data through direct object references without validating ownership of the requested resource.
+## 🏷️ Category
+Broken Access Control – Horizontal Privilege Escalation
 
-## Attack:The attacker intercepted an HTTP request and modified the user identifier parameter, changing the account reference from wiener to carlos, allowing unauthorized access to another user's account data.
+---
 
-## Technical Failure:The server relied on client-supplied identifiers and failed to implement object-level access control validation. No verification was performed to ensure that the authenticated user was authorized to access the requested account information.
+## 🛡️ Vulnerability Description
+The application exposes user account data through direct object references. Even though user IDs might be "unpredictable" (e.g., GUIDs), the application still fails to validate ownership of the requested resource.
 
-## Impact:Attackers can horizontally access other users’ sensitive information by manipulating request parameters, leading to unauthorized data exposure and compromise of account confidentiality.
+## 🚀 Attack Strategy
+1. **Discovery**: Obtained the "unpredictable" identifier for another user (e.g., from a public profile or blog post).
+2. **Interception**: Intercepted an HTTP request and replaced the user's own identifier with the victim's identifier.
+3. **Access**: Gained unauthorized access to the victim's account data.
+
+## 🔍 Technical Root Cause
+The server relied on the difficulty of guessing identifiers (security by obscurity) instead of implementing proper object-level access control validation.
+
+## 💥 Impact
+Horizontal privilege escalation, allowing attackers to access other users' sensitive information and compromising account confidentiality.

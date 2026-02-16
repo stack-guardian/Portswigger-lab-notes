@@ -1,21 +1,20 @@
-# LAB 4 — User Role Manipulation via Server-Side Authorization Failure
+# Lab 4: User Role Manipulation via Server-Side Authorization Failure
 
-## Category:
+## 🏷️ Category
+Broken Access Control – Privilege Escalation
 
-User role can be modified through parameters within the user profile functionality.
+---
 
-## Issue:
+## 🛡️ Vulnerability Description
+User roles can be modified through parameters within the user profile functionality. The application suffers from a server-side authentication and authorization weakness by relying on client-controlled parameters for privilege management.
 
-Server-side authentication and authorization weakness. The application relies on client-controlled parameters for privilege management without enforcing proper validation or role verification on the backend.
+## 🚀 Attack Strategy
+1. **Interception**: Intercepted an HTTP request (e.g., during profile update) using a proxy tool.
+2. **Parameter Tampering**: Modified a request parameter related to user privileges, altering the role value from a standard user to an administrative role.
+3. **Exploitation**: Successfully escalated privileges without legitimate authorization.
 
-## Attack:
+## 🔍 Technical Root Cause
+The server trusted client-supplied data and failed to enforce Role-Based Access Control (RBAC) validation on the backend. There was no integrity verification for privilege-related parameters.
 
-The attacker intercepted an HTTP request using a proxy tool and modified a request parameter related to user privileges. By altering the role value from a standard user to an administrative role, the attacker successfully escalated privileges without legitimate authorization checks.
-
-## Technical Failure:
-
-The server trusted client-supplied data and failed to enforce role-based access control (RBAC) validation on the server side. There was no integrity verification or privilege enforcement mechanism, allowing unauthorized role escalation. As a result, the server processed the modified request as if it originated from a legitimate administrative user.
-
-## Impact:
-
-Unauthorized administrative access may allow attackers to manipulate database records, delete users, modify sensitive information, and compromise overall application integrity and availability.
+## 💥 Impact
+Unauthorized administrative access, enabling attackers to manipulate database records, delete users, and compromise the application's integrity and availability.

@@ -1,9 +1,21 @@
-# Category: User ID controlled by request parameters.
+# Lab 5: User ID Controlled by Request Parameters
 
-## Issue:Broken access control vulnerability due to missing server-side authorization checks. The application retrieves account data directly based on a user identifier supplied in the request without validating whether the authenticated user owns the requested resource.
+## 🏷️ Category
+Broken Access Control – Insecure Direct Object Reference (IDOR)
 
-## Attack:The attacker logged into their own account and intercepted the HTTP request used to access account information. By modifying the user identifier parameter from their own account (wiener) to another user (carlos), the attacker successfully accessed unauthorized account data.
+---
 
-## Technical Failure:The server trusted client-controlled input and failed to enforce object-level authorization validation. No verification was performed to confirm that the authenticated user was permitted to access the requested account, resulting in an Insecure Direct Object Reference (IDOR) vulnerability.
+## 🛡️ Vulnerability Description
+The application retrieves account data directly based on a user identifier supplied in the request without validating whether the authenticated user owns the requested resource.
 
-## Impact:Attackers can access sensitive information belonging to other users by manipulating request parameters, leading to unauthorized data exposure, privacy violations, and potential account compromise.
+## 🚀 Attack Strategy
+1. **Login**: Logged into a legitimate account (`wiener`).
+2. **Interception**: Intercepted the request used to access account information.
+3. **IDOR Manipulation**: Modified the user identifier parameter from `wiener` to another user (`carlos`).
+4. **Access**: Successfully accessed the unauthorized account data of `carlos`.
+
+## 🔍 Technical Root Cause
+The server trusted client-controlled input and failed to enforce object-level authorization. It did not verify if the authenticated user had permission to access the specific resource identifier provided in the request.
+
+## 💥 Impact
+Attackers can access sensitive information belonging to other users, leading to unauthorized data exposure, privacy violations, and potential account compromise.

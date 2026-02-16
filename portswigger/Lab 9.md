@@ -1,9 +1,20 @@
-# Category:Broken Access Control — Insecure Direct Object Reference (IDOR) leading to sensitive information disclosure.
+# Lab 9: Insecure Direct Object Reference (IDOR) in Chat Transcripts
 
-## Issue:The application exposes chat transcripts through a predictable or manipulatable object reference without validating whether the authenticated user is authorized to access the requested transcript. As a result, historical chat conversations containing sensitive information are accessible.
+## 🏷️ Category
+Broken Access Control – IDOR
 
-## Attack:The attacker intercepted the request used to retrieve a chat transcript and modified the object reference parameter to access another user’s transcript (Carlos). The response contained older conversation data, including sensitive information such as login credentials.
+---
 
-## Technical Failure:The server failed to implement object-level authorization checks when serving transcript data. It trusted client-controlled identifiers and did not verify ownership of the requested resource before returning the transcript.
+## 🛡️ Vulnerability Description
+The application allows users to download chat transcripts. These transcripts are retrieved using predictable object references (e.g., incrementing IDs), and the server fails to validate if the user is authorized to access the requested transcript.
 
-## Impact:An attacker can retrieve confidential user conversations, including sensitive credentials, resulting in account compromise and unauthorized access to the victim’s account.
+## 🚀 Attack Strategy
+1. **Interception**: Intercepted the request to download a chat transcript.
+2. **ID Manipulation**: Modified the filename or ID parameter to point to a different transcript (e.g., `1.txt` to `2.txt`).
+3. **Data Retrieval**: Successfully downloaded transcripts belonging to other users, which contained sensitive information like login credentials.
+
+## 🔍 Technical Root Cause
+Lack of object-level authorization checks. The server trusted the filename/ID provided by the client without verifying the user's session-based permissions.
+
+## 💥 Impact
+Confidentiality breach; unauthorized access to private conversations and potentially sensitive credentials.

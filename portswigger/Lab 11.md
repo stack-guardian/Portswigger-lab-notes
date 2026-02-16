@@ -1,11 +1,21 @@
-LAB 11 :
+# Lab 11: Method-Based Access Control Circumvention
 
-## Category : Method-based access control can be circumvented
+## 🏷️ Category
+Broken Access Control – HTTP Method Bypass
 
-## Issue : the 2FA has also a vulnberalibility that can be targated by unauthorized user.
+---
 
-## Attack : the request is intercepted in between the authorization of the 2nd step. and directly the names and cookies changed from admins to wiener.
+## 🛡️ Vulnerability Description
+Access controls are implemented based on the HTTP method (e.g., GET, POST). However, the application fails to apply these controls consistently when the method is changed or when parameters are passed differently.
 
-## Technical failure : server failed to check the authentication and gaved the authorization of admin to the other normal users.
+## 🚀 Attack Strategy
+1. **Interception**: Intercepted a privileged request (e.g., changing a user's role).
+2. **Method Switching**: Changed the HTTP method (e.g., from `POST` to `GET` or using `POST` on a `GET` endpoint).
+3. **Credential Manipulation**: Modified the target username and associated cookies to perform the action as a low-privileged user.
+4. **Execution**: The server accepted the unauthorized request, resulting in the downgrade or modification of another user.
 
-## impact : the user carlos has been downgraded.
+## 🔍 Technical Root Cause
+The server only enforced authorization on specific HTTP methods or failed to validate the user's role consistently across all possible methods for a given endpoint.
+
+## 💥 Impact
+Unauthorized privilege manipulation and bypass of intended access control policies.

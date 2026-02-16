@@ -1,45 +1,26 @@
-# LAB 3 — User Role Controlled by Request Parameter
+# Lab 3: User Role Controlled by Request Parameter
 
-## Category
+## 🏷️ Category
+Broken Access Control – Vertical Privilege Escalation (Parameter Tampering)
 
-Broken Access Control
+---
 
-Vertical Privilege Escalation
-
-Parameter Tampering
-
-## Vulnerability Description
-
+## 🛡️ Vulnerability Description
 The application relied on a client-controlled request parameter to determine administrative privileges. Authorization decisions were made using user-supplied data without server-side validation.
 
-## Attack Methodology
+## 🚀 Attack Strategy
+1. **Interception**: Intercepted an authenticated request using Burp Suite.
+2. **Identification**: Located a parameter in the request that appeared to control privileges (e.g., `admin=false`).
+3. **Tampering**: Modified the value from `false` to `true`.
+4. **Elevation**: Forwarded the request and gained administrative access.
 
-1.Intercepted authenticated request using Burp Suite.
+## 🔍 Technical Root Cause
+Authorization logic was implemented on the client side or trusted client-side input instead of being enforced securely on the server. The server failed to validate the modified request parameters against the user's actual session-based permissions.
 
-2.Identified privilege parameter in request.
+## 💥 Impact
+Unauthorized administrative access and privilege escalation, allowing an attacker to perform sensitive operations.
 
-3.Modified authorization value from: admin - false to admin - true
-
-4.Forwarded request to server.
-
-5.Application granted administrative access.
-
-## Technical Root Cause
-
-Authorization logic was implemented on the client side instead of being enforced securely on the server. The server trusted modified request parameters.
-
-## Impact
-
-1.Unauthorized administrative access
-
-2.Privilege escalation
-
-3.Ability to perform sensitive operations
-
-## Security Recommendation
-
-1.Implement server-side authorization checks
-
-2.Do not trust client-supplied privilege values
-
-3.Enforce role validation from session/database
+## ✅ Security Recommendation
+- Implement server-side authorization checks.
+- Do not trust client-supplied privilege values.
+- Enforce role validation using secure session data or database records.

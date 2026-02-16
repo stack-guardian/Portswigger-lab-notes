@@ -1,20 +1,20 @@
-# LAB 13
+# Lab 13: Referer-Based Authorization Bypass
 
-## Category:Broken Access Control – Referer-Based Authorization
+## 🏷️ Category
+Broken Access Control – Insecure Authorization Mechanism
 
-## Issue:The application enforces access control for administrative functionality by validating the Referer HTTP header. Instead of verifying the user's privileges on the server side, the application checks whether the request originates from /admin.
+---
 
-## Attack:The attacker logs in as a low-privileged user (wiener).
+## 🛡️ Vulnerability Description
+The application relies on the `Referer` HTTP header to make authorization decisions for administrative actions. It checks if the request originated from an `/admin` page rather than verifying the user's actual session privileges.
 
-By intercepting the administrative role-upgrade request in Burp Repeater
-The server accepts the request because it trusts the Referer header, even though the user does not have administrative privileges.
+## 🚀 Attack Strategy
+1. **Interception**: Logged in as a low-privileged user and intercepted a request to an administrative function.
+2. **Header Manipulation**: Manually set or modified the `Referer` header to point to the expected administrative URL (e.g., `https://.../admin`).
+3. **Bypass**: The server accepted the request based on the trusted header, granting unauthorized access.
 
-## Technical Failure:The backend relies on a client-controlled HTTP header (Referer) to enforce authorization decisions.
+## 🔍 Technical Root Cause
+The backend relied on a client-controlled HTTP header for security decisions. Headers like `Referer` are easily spoofed and should never be used for authorization.
 
-HTTP headers such as: RefererUser-Agent Origin are fully controllable by the client and must never be used for security decisions.
-
-There is no proper server-side role validation tied to the authenticated session.
-
-## Impact:A low-privileged user can perform administrative actions (e.g., promote users) by manipulating HTTP headers.
-
-This results in privilege escalation and complete compromise of admin-level functionality.
+## 💥 Impact
+Privilege escalation; low-privileged users can perform administrative actions by simply manipulating headers.

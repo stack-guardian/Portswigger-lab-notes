@@ -1,19 +1,20 @@
-# Category:
+# Lab 10: Improper Enforcement of URL-Based Authorization Controls
 
-Broken Access Control — Improper Enforcement of URL-Based Authorization Controls.
+## 🏷️ Category
+Broken Access Control – Bypass via HTTP Headers
 
-## Issue:
+---
 
-The application attempts to restrict access to administrative functionality by blocking direct access to specific URLs. However, access control enforcement is performed inconsistently, allowing the restriction to be bypassed through manipulated HTTP headers.
+## 🛡️ Vulnerability Description
+The application attempts to restrict access to administrative URLs, but the enforcement is inconsistent. Access controls can be bypassed by using specific HTTP headers that confuse the routing or authorization logic.
 
-## Attack:
+## 🚀 Attack Strategy
+1. **Access Attempt**: Attempted to access `/admin` directly and was blocked.
+2. **Header Manipulation**: Added headers like `X-Original-URL: /admin` or `X-Rewrite-URL: /admin` to a request targeting a non-restricted endpoint.
+3. **Bypass**: The backend processed the request based on the header, granting unauthorized access to the admin panel.
 
-The attacker intercepted a request to a restricted administrative endpoint using Burp Suite. Although direct access to the /admin URL was blocked, the attacker modified the HTTP request headers (such as adding or manipulating X-Original-URL or similar headers). The backend server processed the request based on the modified header and granted unauthorized access to the administrative functionality.
+## 🔍 Technical Root Cause
+The application relied on front-end or proxy-level URL filtering instead of robust server-side authorization. It trusted client-supplied header values to determine the effective request target.
 
-## Technical Failure:
-
-The application relied on front-end or proxy-level URL filtering instead of implementing strict server-side authorization checks. The backend trusted header values supplied by the client and failed to validate whether the authenticated user had sufficient privileges to access the protected resource.
-
-## Impact:
-
-An attacker can bypass access restrictions and gain unauthorized access to administrative endpoints. This may allow sensitive operations such as deleting users, modifying data, or compromising the application’s integrity.
+## 💥 Impact
+Unauthorized access to administrative functionality, potentially leading to full system compromise.

@@ -1,23 +1,20 @@
-# Lab 2: Unprotected admin functionality with unpredictable URL
+# Lab 2: Unprotected Admin Functionality with Unpredictable URL
 
-## Category
-
+## 🏷️ Category
 Broken Access Control – Vertical Privilege Escalation
 
-## Core Issue
+---
 
-Administrative functionality was exposed through a JavaScript file and accessible directly without proper server-side authorization checks.
+## 🛡️ Vulnerability Description
+Administrative functionality was exposed through a client-side JavaScript file and accessible directly without proper server-side authorization checks. Although the URL was "unpredictable," it was still discoverable.
 
-## Attack Strategy
+## 🚀 Attack Strategy
+1. **Source Code Analysis**: Reviewed client-side JavaScript files to identify hidden administrative endpoints.
+2. **Direct Access**: Accessed the discovered admin URL directly to reach privileged functionality.
+3. **Exploitation**: Performed administrative actions such as deleting user accounts.
 
-Reviewed client-side JavaScript to identify hidden administrative endpoints.
-Accessed the discovered admin URL directly to reach privileged functionality.
+## 🔍 Technical Root Cause
+The backend failed to enforce role-based access control (RBAC) on sensitive endpoints. The application relied on the unpredictability of the URL (obscurity) rather than robust authorization validation.
 
-## Technical Failure
-
-Backend failed to enforce role-based access control on sensitive endpoints.
-Application relied on obscurity rather than authorization validation.
-
-## Impact (Real World Context)
-
-## Attackers could access administrative panels and perform privileged actions such as deleting user accounts.
+## 💥 Impact
+Attackers can bypass the intended access restrictions, access administrative panels, and perform privileged actions like deleting users.
