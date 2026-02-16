@@ -1,20 +1,19 @@
-# Lab 4: User Role Manipulation via Server-Side Authorization Failure
+# Lab 4: User role manipulation via server-side authorization failure
 
-## 🏷️ Category
-Broken Access Control – Privilege Escalation
+## Category
+Broken Access Control (Privilege Escalation)
 
----
+## Vulnerability Summary
+The application allows users to modify their own profile data, including role-related parameters. Because the server does not validate these specific changes, users can self-promote to an administrative role.
 
-## 🛡️ Vulnerability Description
-User roles can be modified through parameters within the user profile functionality. The application suffers from a server-side authentication and authorization weakness by relying on client-controlled parameters for privilege management.
+## Attack Methodology
+1. Initiated a profile update request and captured it using a proxy.
+2. Added or modified a parameter associated with the user's role within the request body.
+3. Submitted the request to the server, which accepted the new role without verification.
+4. Confirmed administrative access was granted.
 
-## 🚀 Attack Strategy
-1. **Interception**: Intercepted an HTTP request (e.g., during profile update) using a proxy tool.
-2. **Parameter Tampering**: Modified a request parameter related to user privileges, altering the role value from a standard user to an administrative role.
-3. **Exploitation**: Successfully escalated privileges without legitimate authorization.
+## Technical Root Cause
+The backend failed to implement a restricted schema for user profile updates. It allowed the modification of sensitive fields that should only be accessible by the system or higher-privileged users.
 
-## 🔍 Technical Root Cause
-The server trusted client-supplied data and failed to enforce Role-Based Access Control (RBAC) validation on the backend. There was no integrity verification for privilege-related parameters.
-
-## 💥 Impact
-Unauthorized administrative access, enabling attackers to manipulate database records, delete users, and compromise the application's integrity and availability.
+## Impact
+This flaw leads to unauthorized role escalation, allowing any user to gain full administrative rights over the platform.

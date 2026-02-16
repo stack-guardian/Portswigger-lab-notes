@@ -1,21 +1,18 @@
-# Lab 5: User ID Controlled by Request Parameters
+# Lab 5: User ID controlled by request parameters
 
-## 🏷️ Category
-Broken Access Control – Insecure Direct Object Reference (IDOR)
+## Category
+Insecure Direct Object Reference (IDOR)
 
----
+## Vulnerability Summary
+The application retrieves and displays user account information based on a user-provided identifier in the request. It fails to check if the authenticated user has the authority to view the data associated with that identifier.
 
-## 🛡️ Vulnerability Description
-The application retrieves account data directly based on a user identifier supplied in the request without validating whether the authenticated user owns the requested resource.
+## Attack Methodology
+1. Logged into a standard account and observed the request used to view the profile.
+2. Modified the user identifier in the URL or request body to match a target user.
+3. Successfully accessed the target user's private account information and API keys.
 
-## 🚀 Attack Strategy
-1. **Login**: Logged into a legitimate account (`wiener`).
-2. **Interception**: Intercepted the request used to access account information.
-3. **IDOR Manipulation**: Modified the user identifier parameter from `wiener` to another user (`carlos`).
-4. **Access**: Successfully accessed the unauthorized account data of `carlos`.
+## Technical Root Cause
+The server performed a direct lookup of the object (user profile) using the provided ID without implementing an ownership check to verify that the ID belonged to the current session user.
 
-## 🔍 Technical Root Cause
-The server trusted client-controlled input and failed to enforce object-level authorization. It did not verify if the authenticated user had permission to access the specific resource identifier provided in the request.
-
-## 💥 Impact
-Attackers can access sensitive information belonging to other users, leading to unauthorized data exposure, privacy violations, and potential account compromise.
+## Impact
+Unauthorized access to sensitive user data, leading to a breach of privacy and potential account takeover if credentials or tokens are exposed.

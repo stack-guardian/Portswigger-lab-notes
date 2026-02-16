@@ -1,20 +1,18 @@
-# Lab 10: Improper Enforcement of URL-Based Authorization Controls
+# Lab 10: Improper enforcement of URL-based authorization controls
 
-## 🏷️ Category
-Broken Access Control – Bypass via HTTP Headers
+## Category
+Broken Access Control (Header-Based Bypass)
 
----
+## Vulnerability Summary
+Access to administrative URLs is restricted at the network or proxy level, but the backend server supports custom HTTP headers that can override the requested URL. This allows attackers to bypass the front-end restrictions.
 
-## 🛡️ Vulnerability Description
-The application attempts to restrict access to administrative URLs, but the enforcement is inconsistent. Access controls can be bypassed by using specific HTTP headers that confuse the routing or authorization logic.
+## Attack Methodology
+1. Attempted to access `/admin` and received an access denied message from the proxy/WAF.
+2. Modified the request to a permitted endpoint but added a header such as `X-Original-URL: /admin`.
+3. The backend server prioritized the header value and rendered the administrative interface.
 
-## 🚀 Attack Strategy
-1. **Access Attempt**: Attempted to access `/admin` directly and was blocked.
-2. **Header Manipulation**: Added headers like `X-Original-URL: /admin` or `X-Rewrite-URL: /admin` to a request targeting a non-restricted endpoint.
-3. **Bypass**: The backend processed the request based on the header, granting unauthorized access to the admin panel.
+## Technical Root Cause
+The application environment relied on inconsistent URL parsing between the front-end proxy and the back-end application server, allowing the latter to be "tricked" into serving restricted content via header manipulation.
 
-## 🔍 Technical Root Cause
-The application relied on front-end or proxy-level URL filtering instead of robust server-side authorization. It trusted client-supplied header values to determine the effective request target.
-
-## 💥 Impact
-Unauthorized access to administrative functionality, potentially leading to full system compromise.
+## Impact
+Bypass of high-level security controls, granting unauthorized access to administrative functionality.

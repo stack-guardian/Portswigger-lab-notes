@@ -1,21 +1,19 @@
-# Lab 8: User ID Controlled by Request Parameter with Password Disclosure
+# Lab 8: User ID controlled by request parameter with password disclosure
 
-## 🏷️ Category
-Broken Access Control – IDOR / Sensitive Data Exposure
+## Category
+Insecure Direct Object Reference (IDOR)
 
----
+## Vulnerability Summary
+The user profile interface includes the user's password in the HTML source. By manipulating the user ID in the request, an attacker can view the passwords of other users, including the administrator.
 
-## 🛡️ Vulnerability Description
-The application discloses the user's password in a request or response when accessing the user profile via a manipulated ID parameter.
+## Attack Methodology
+1. Accessed the user profile page and identified where the password was reflected in the source.
+2. Changed the user ID parameter to 'administrator' and intercepted the response.
+3. Extracted the administrator's password from the response body.
+4. Logged in as the administrator and deleted the target user.
 
-## 🚀 Attack Strategy
-1. **Interception**: Captured the request to the user's own profile.
-2. **Manipulation**: Changed the user parameter to `administrator`.
-3. **Disclosure**: Observed the administrator's password being leaked in the resulting response/request cycle.
-4. **Exploitation**: Used the leaked password to log in as the administrator and delete user `carlos`.
+## Technical Root Cause
+The application improperly included highly sensitive information (plaintext or masked passwords) in the client-side response and lacked server-side ownership validation for the profile being requested.
 
-## 🔍 Technical Root Cause
-The server logic included highly sensitive data (passwords) in responses and failed to validate that the requester was authorized to view that specific user's profile data.
-
-## 💥 Impact
-Full administrative account compromise and unauthorized control over the application.
+## Impact
+Critical security breach allowing for full account takeover of any user, including administrative accounts.

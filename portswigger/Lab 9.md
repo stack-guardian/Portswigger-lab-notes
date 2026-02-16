@@ -1,20 +1,19 @@
-# Lab 9: Insecure Direct Object Reference (IDOR) in Chat Transcripts
+# Lab 9: Insecure direct object reference in chat transcripts
 
-## 🏷️ Category
-Broken Access Control – IDOR
+## Category
+Broken Access Control (IDOR)
 
----
+## Vulnerability Summary
+The application provides access to historical chat transcripts using a predictable file-naming convention. It fails to verify if the requester was a participant in the chat before serving the file.
 
-## 🛡️ Vulnerability Description
-The application allows users to download chat transcripts. These transcripts are retrieved using predictable object references (e.g., incrementing IDs), and the server fails to validate if the user is authorized to access the requested transcript.
+## Attack Methodology
+1. Initiated a chat and downloaded the resulting transcript.
+2. Observed the naming pattern of the transcript file (e.g., `2.txt`).
+3. Manually requested a different file number (e.g., `1.txt`).
+4. Successfully downloaded a transcript containing another user's sensitive information.
 
-## 🚀 Attack Strategy
-1. **Interception**: Intercepted the request to download a chat transcript.
-2. **ID Manipulation**: Modified the filename or ID parameter to point to a different transcript (e.g., `1.txt` to `2.txt`).
-3. **Data Retrieval**: Successfully downloaded transcripts belonging to other users, which contained sensitive information like login credentials.
+## Technical Root Cause
+The transcript retrieval system lacked an access control list (ACL) or session-based verification. It served any file requested as long as the file existed on the server.
 
-## 🔍 Technical Root Cause
-Lack of object-level authorization checks. The server trusted the filename/ID provided by the client without verifying the user's session-based permissions.
-
-## 💥 Impact
-Confidentiality breach; unauthorized access to private conversations and potentially sensitive credentials.
+## Impact
+Exposure of private conversations which may contain credentials, personal data, or sensitive business information.

@@ -1,20 +1,18 @@
-# Lab 1: Unprotected Admin Functionality
+# Lab 1: Unprotected admin functionality
 
-## 🏷️ Category
+## Category
 Broken Access Control
 
----
+## Vulnerability Summary
+The application's administrative interface is exposed without any role-based validation. This allows any user to access sensitive management functionality simply by knowing or discovering the correct URL.
 
-## 🛡️ Vulnerability Description
-Admin endpoints are accessible without any role validation. The application fails to restrict access to sensitive administrative pages, allowing any user to navigate to them directly.
+## Attack Methodology
+1. Performed manual endpoint discovery and identified the `/admin` path.
+2. Navigated directly to the endpoint without an administrative session.
+3. Successfully executed an administrative command to delete the user account for 'carlos'.
 
-## 🚀 Attack Strategy
-1. **Endpoint Discovery**: Manually identified the administrative endpoint (e.g., `/admin`).
-2. **Direct Navigation**: Navigated directly to the discovered URL without being logged in as an administrator.
-3. **Exploitation**: Used the administrative interface to delete the user `carlos`.
+## Technical Root Cause
+The server lacked an authorization layer or middleware to intercept requests to privileged routes. It failed to verify if the requesting session possessed the required permissions before rendering the administrative interface.
 
-## 🔍 Technical Root Cause
-The server lacked proper authorization middleware or checks on sensitive endpoints. It relied on "security by obscurity" or simply failed to verify the user's role before granting access to privileged functionality.
-
-## 💥 Impact
-Complete compromise of administrative functions, allowing unauthorized users to perform sensitive actions such as account deletion.
+## Impact
+An unauthorized attacker can perform high-privilege actions, including user management and system configuration changes, leading to a complete compromise of the application's administrative functions.

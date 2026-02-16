@@ -1,20 +1,18 @@
-# Lab 2: Unprotected Admin Functionality with Unpredictable URL
+# Lab 2: Unprotected admin functionality with unpredictable URL
 
-## 🏷️ Category
-Broken Access Control – Vertical Privilege Escalation
+## Category
+Broken Access Control (Vertical Privilege Escalation)
 
----
+## Vulnerability Summary
+Administrative features were intended to be hidden via an unpredictable URL. However, this endpoint was disclosed in client-side code, allowing unauthorized access due to a lack of server-side authorization.
 
-## 🛡️ Vulnerability Description
-Administrative functionality was exposed through a client-side JavaScript file and accessible directly without proper server-side authorization checks. Although the URL was "unpredictable," it was still discoverable.
+## Attack Methodology
+1. Analyzed client-side JavaScript source code to identify references to administrative endpoints.
+2. Discovered a non-standard administrative URL that was otherwise hidden from the UI.
+3. Accessed the URL directly to gain administrative privileges and delete the target user.
 
-## 🚀 Attack Strategy
-1. **Source Code Analysis**: Reviewed client-side JavaScript files to identify hidden administrative endpoints.
-2. **Direct Access**: Accessed the discovered admin URL directly to reach privileged functionality.
-3. **Exploitation**: Performed administrative actions such as deleting user accounts.
+## Technical Root Cause
+The application relied on security by obscurity rather than actual authorization. The backend failed to validate the user's role, assuming that only an administrator would know the specific URL.
 
-## 🔍 Technical Root Cause
-The backend failed to enforce role-based access control (RBAC) on sensitive endpoints. The application relied on the unpredictability of the URL (obscurity) rather than robust authorization validation.
-
-## 💥 Impact
-Attackers can bypass the intended access restrictions, access administrative panels, and perform privileged actions like deleting users.
+## Impact
+Sensitive administrative panels can be accessed by any user who discovers the URL, leading to unauthorized account deletions and privilege escalation.

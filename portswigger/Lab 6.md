@@ -1,20 +1,18 @@
-# Lab 6: User ID Controlled by Request Parameters (Unpredictable IDs)
+# Lab 6: User ID controlled by request parameters with unpredictable IDs
 
-## 🏷️ Category
-Broken Access Control – Horizontal Privilege Escalation
+## Category
+Broken Access Control (Horizontal Privilege Escalation)
 
----
+## Vulnerability Summary
+The application uses unpredictable identifiers (like GUIDs) for users but still relies on them as the sole "security" mechanism. If an attacker discovers another user's ID, they can access their account data due to missing authorization checks.
 
-## 🛡️ Vulnerability Description
-The application exposes user account data through direct object references. Even though user IDs might be "unpredictable" (e.g., GUIDs), the application still fails to validate ownership of the requested resource.
+## Attack Methodology
+1. Discovered a target user's unique identifier through public-facing parts of the application (e.g., a blog post or comment).
+2. Substituted the attacker's own ID with the discovered ID in a profile request.
+3. Accessed the victim's account details.
 
-## 🚀 Attack Strategy
-1. **Discovery**: Obtained the "unpredictable" identifier for another user (e.g., from a public profile or blog post).
-2. **Interception**: Intercepted an HTTP request and replaced the user's own identifier with the victim's identifier.
-3. **Access**: Gained unauthorized access to the victim's account data.
+## Technical Root Cause
+The system used "security by obscurity" by assuming unpredictable IDs were equivalent to authorization. The backend failed to validate that the requested ID matched the authenticated user's identity.
 
-## 🔍 Technical Root Cause
-The server relied on the difficulty of guessing identifiers (security by obscurity) instead of implementing proper object-level access control validation.
-
-## 💥 Impact
-Horizontal privilege escalation, allowing attackers to access other users' sensitive information and compromising account confidentiality.
+## Impact
+Horizontal privilege escalation, allowing any user to access the data of any other user once their unique identifier is known.

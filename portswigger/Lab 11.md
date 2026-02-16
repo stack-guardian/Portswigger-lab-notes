@@ -1,21 +1,19 @@
-# Lab 11: Method-Based Access Control Circumvention
+# Lab 11: Method-based access control circumvention
 
-## 🏷️ Category
-Broken Access Control – HTTP Method Bypass
+## Category
+Broken Access Control (Method Bypass)
 
----
+## Vulnerability Summary
+The application enforces access controls on certain HTTP methods (like POST) but fails to apply the same restrictions when the request is sent using a different method (like GET or a modified POST).
 
-## 🛡️ Vulnerability Description
-Access controls are implemented based on the HTTP method (e.g., GET, POST). However, the application fails to apply these controls consistently when the method is changed or when parameters are passed differently.
+## Attack Methodology
+1. Attempted a privileged action (e.g., changing a user's role) and observed the required POST request.
+2. Noticed the action was blocked for low-privileged users.
+3. Resubmitted the request but changed the HTTP method to GET or used a different method that the server still processed.
+4. The server executed the action without validating the user's role for the alternative method.
 
-## 🚀 Attack Strategy
-1. **Interception**: Intercepted a privileged request (e.g., changing a user's role).
-2. **Method Switching**: Changed the HTTP method (e.g., from `POST` to `GET` or using `POST` on a `GET` endpoint).
-3. **Credential Manipulation**: Modified the target username and associated cookies to perform the action as a low-privileged user.
-4. **Execution**: The server accepted the unauthorized request, resulting in the downgrade or modification of another user.
+## Technical Root Cause
+Authorization checks were tied specifically to certain HTTP verbs rather than the endpoint or the action itself. This allowed for bypasses when the server was configured to be method-agnostic for certain functions.
 
-## 🔍 Technical Root Cause
-The server only enforced authorization on specific HTTP methods or failed to validate the user's role consistently across all possible methods for a given endpoint.
-
-## 💥 Impact
-Unauthorized privilege manipulation and bypass of intended access control policies.
+## Impact
+Attackers can perform restricted actions, such as changing user roles or permissions, by simply switching the HTTP method.

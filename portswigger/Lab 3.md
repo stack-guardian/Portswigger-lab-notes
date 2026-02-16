@@ -1,26 +1,19 @@
-# Lab 3: User Role Controlled by Request Parameter
+# Lab 3: User role controlled by request parameter
 
-## 🏷️ Category
-Broken Access Control – Vertical Privilege Escalation (Parameter Tampering)
+## Category
+Broken Access Control (Parameter Tampering)
 
----
+## Vulnerability Summary
+The application makes authorization decisions based on a parameter supplied by the client. By modifying this parameter, a user can trick the server into granting administrative access.
 
-## 🛡️ Vulnerability Description
-The application relied on a client-controlled request parameter to determine administrative privileges. Authorization decisions were made using user-supplied data without server-side validation.
+## Attack Methodology
+1. Intercepted a standard authenticated request using a proxy.
+2. Identified a parameter (such as a cookie or body field) that explicitly defined the user's role.
+3. Modified the value from 'false' to 'true' (or similar) to indicate administrative status.
+4. Forwarded the modified request and gained access to the admin panel.
 
-## 🚀 Attack Strategy
-1. **Interception**: Intercepted an authenticated request using Burp Suite.
-2. **Identification**: Located a parameter in the request that appeared to control privileges (e.g., `admin=false`).
-3. **Tampering**: Modified the value from `false` to `true`.
-4. **Elevation**: Forwarded the request and gained administrative access.
+## Technical Root Cause
+The server trusted user-controlled input for security-critical decisions. Authorization logic should be handled server-side based on the session state, not on parameters that can be manipulated by the client.
 
-## 🔍 Technical Root Cause
-Authorization logic was implemented on the client side or trusted client-side input instead of being enforced securely on the server. The server failed to validate the modified request parameters against the user's actual session-based permissions.
-
-## 💥 Impact
-Unauthorized administrative access and privilege escalation, allowing an attacker to perform sensitive operations.
-
-## ✅ Security Recommendation
-- Implement server-side authorization checks.
-- Do not trust client-supplied privilege values.
-- Enforce role validation using secure session data or database records.
+## Impact
+Attackers can easily escalate their own privileges to the highest level, gaining full control over administrative operations.

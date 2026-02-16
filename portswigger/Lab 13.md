@@ -1,20 +1,18 @@
-# Lab 13: Referer-Based Authorization Bypass
+# Lab 13: Referer-based authorization bypass
 
-## 🏷️ Category
-Broken Access Control – Insecure Authorization Mechanism
+## Category
+Broken Access Control (Insecure Referer Validation)
 
----
+## Vulnerability Summary
+The application attempts to secure administrative functions by checking the `Referer` header of the request. It assumes that if a request comes from an administrative page, it must be legitimate.
 
-## 🛡️ Vulnerability Description
-The application relies on the `Referer` HTTP header to make authorization decisions for administrative actions. It checks if the request originated from an `/admin` page rather than verifying the user's actual session privileges.
+## Attack Methodology
+1. Identified an administrative action that was restricted.
+2. Captured the request and manually added or modified the `Referer` header to match the administrative URL.
+3. The server accepted the spoofed header and executed the privileged action.
 
-## 🚀 Attack Strategy
-1. **Interception**: Logged in as a low-privileged user and intercepted a request to an administrative function.
-2. **Header Manipulation**: Manually set or modified the `Referer` header to point to the expected administrative URL (e.g., `https://.../admin`).
-3. **Bypass**: The server accepted the request based on the trusted header, granting unauthorized access.
+## Technical Root Cause
+The application used a client-controlled header (the Referer) for a security decision. Since headers can be trivialy modified by an attacker, they are not a reliable source for authorization.
 
-## 🔍 Technical Root Cause
-The backend relied on a client-controlled HTTP header for security decisions. Headers like `Referer` are easily spoofed and should never be used for authorization.
-
-## 💥 Impact
-Privilege escalation; low-privileged users can perform administrative actions by simply manipulating headers.
+## Impact
+Attackers can perform administrative actions by simply spoofing the request origin, leading to unauthorized system changes and privilege escalation.
