@@ -1,4 +1,4 @@
-# Lab 8: User ID controlled by request parameter with password disclosure
+# Lab 08: User ID controlled by request parameter with password disclosure
 
 ## Category
 Insecure Direct Object Reference (IDOR)

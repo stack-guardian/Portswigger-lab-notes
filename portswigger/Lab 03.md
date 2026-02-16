@@ -1,4 +1,4 @@
-# Lab 3: User role controlled by request parameter
+# Lab 03: User role controlled by request parameter
 
 ## Category
 Broken Access Control (Parameter Tampering)

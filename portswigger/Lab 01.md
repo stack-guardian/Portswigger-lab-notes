@@ -1,4 +1,4 @@
-# Lab 1: Unprotected admin functionality
+# Lab 01: Unprotected admin functionality
 
 ## Category
 Broken Access Control

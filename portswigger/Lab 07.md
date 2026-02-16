@@ -1,4 +1,4 @@
-# Lab 7: Horizontal privilege escalation via IDOR with sensitive data disclosure
+# Lab 07: Horizontal privilege escalation via IDOR with sensitive data disclosure
 
 ## Category
 Insecure Direct Object Reference (IDOR)

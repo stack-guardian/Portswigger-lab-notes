@@ -1,4 +1,4 @@
-# Lab 4: User role manipulation via server-side authorization failure
+# Lab 04: User role manipulation via server-side authorization failure
 
 ## Category
 Broken Access Control (Privilege Escalation)

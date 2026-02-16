@@ -1,4 +1,4 @@
-# Lab 5: User ID controlled by request parameters
+# Lab 05: User ID controlled by request parameters
 
 ## Category
 Insecure Direct Object Reference (IDOR)

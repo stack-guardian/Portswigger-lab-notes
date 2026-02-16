@@ -1,4 +1,4 @@
-# Lab 9: Insecure direct object reference in chat transcripts
+# Lab 09: Insecure direct object reference in chat transcripts
 
 ## Category
 Broken Access Control (IDOR)

@@ -1,4 +1,4 @@
-# Lab 6: User ID controlled by request parameters with unpredictable IDs
+# Lab 06: User ID controlled by request parameters with unpredictable IDs
 
 ## Category
 Broken Access Control (Horizontal Privilege Escalation)

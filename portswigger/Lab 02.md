@@ -1,4 +1,4 @@
-# Lab 2: Unprotected admin functionality with unpredictable URL
+# Lab 02: Unprotected admin functionality with unpredictable URL
 
 ## Category
 Broken Access Control (Vertical Privilege Escalation)
