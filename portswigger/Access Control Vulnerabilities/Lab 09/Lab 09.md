@@ -7,6 +7,8 @@ Broken Access Control (IDOR)
 The application provides access to historical chat transcripts using a predictable file-naming convention. It fails to verify if the requester was a participant in the chat before serving the file.
 
 ## Attack Methodology
+![Lab 09 Screenshot](screenshot.png)
+
 1. Initiated a chat and downloaded the resulting transcript.
 2. Observed the naming pattern of the transcript file (e.g., `2.txt`).
 3. Manually requested a different file number (e.g., `1.txt`).
