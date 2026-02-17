@@ -7,6 +7,8 @@ Insecure Direct Object Reference (IDOR)
 The user profile interface includes the user's password in the HTML source. By manipulating the user ID in the request, an attacker can view the passwords of other users, including the administrator.
 
 ## Attack Methodology
+![Lab 08 Screenshot](screenshot.png)
+
 1. Accessed the user profile page and identified where the password was reflected in the source.
 2. Changed the user ID parameter to 'administrator' and intercepted the response.
 3. Extracted the administrator's password from the response body.
