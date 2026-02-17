@@ -7,6 +7,8 @@ Broken Access Control (Insecure Referer Validation)
 The application attempts to secure administrative functions by checking the `Referer` header of the request. It assumes that if a request comes from an administrative page, it must be legitimate.
 
 ## Attack Methodology
+![Lab 13 Screenshot](screenshot.png)
+
 1. Identified an administrative action that was restricted.
 2. Captured the request and manually added or modified the `Referer` header to match the administrative URL.
 3. The server accepted the spoofed header and executed the privileged action.
