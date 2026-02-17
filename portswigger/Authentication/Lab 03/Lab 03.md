@@ -7,6 +7,8 @@ Authentication (Broken Logic / Password Reset)
 The application's password reset functionality contains a logic flaw that allows an attacker to reset the password of any user without proper authorization. By manipulating request parameters, an attacker can bypass the intended security controls and perform an account takeover.
 
 ## Attack Methodology
+![Lab 03 Screenshot](screenshot.png)
+
 1. **Request Initiation:** Started a legitimate password reset process for the controlled account 'wiener'.
 2. **Interception:** Intercepted the password reset submission request using Burp Suite.
 3. **Parameter Manipulation:** Identified the parameter used to specify the username (e.g., `username=wiener`) and modified it to target another user (e.g., `username=carlos`).
