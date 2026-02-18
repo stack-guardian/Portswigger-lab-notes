@@ -24,3 +24,5 @@ This vulnerability leads to complete account takeover of the user 'adm'. An atta
 - Enumerate valid usernames in the system
 - Perform targeted password brute-forcing once usernames are identified
 - Gain unauthorized access to user accounts and sensitive data
+
+*this lab took literally 4 hours straight for me to solve and find the actual flaw on my own*
