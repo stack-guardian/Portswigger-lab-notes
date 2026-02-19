@@ -37,4 +37,4 @@ The targeted user account has been completely compromised through a single-reque
 
 
 
-# [Also it was the easiest lab in the entire authentication section. lol]
+# [Also it was the easiest lab in the entire authentication section. tbh]
