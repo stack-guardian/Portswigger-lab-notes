@@ -14,6 +14,8 @@ The application is vulnerable to username enumeration through its account lockou
 5. **Sniper Attack:** After the 1-minute lockout period, performed a sniper attack targeting only the password parameter with the known username.
 6. **Credential Discovery:** Successfully obtained both the username (adm) and its corresponding password.
 
+![Lab 07 Screenshot](screenshot.png)
+
 ## Technical Root Cause
 The application behaves differently for valid usernames versus invalid usernames during login attempts when account lockout is triggered. Instead of returning a generic error message regardless of username validity, the server reveals whether an account exists by enforcing a rate limit only on known usernames. This differential response allows attackers to enumerate valid user accounts.
 
