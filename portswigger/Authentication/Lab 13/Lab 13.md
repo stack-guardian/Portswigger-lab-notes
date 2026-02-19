@@ -34,3 +34,7 @@ The targeted user account has been completely compromised through a single-reque
 - Exploit the vulnerability against multiple user accounts in rapid succession
 - Completely undermine the security benefits of brute-force protection mechanisms
 - Perform account takeover attacks at scale with minimal network footprint
+
+
+
+# also it was the easiest lab in the entire authentication section.
