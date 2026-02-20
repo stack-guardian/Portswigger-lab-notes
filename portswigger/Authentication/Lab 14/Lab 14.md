@@ -36,3 +36,5 @@ The administrator account `carlos` has been completely compromised through a ses
 - Exploit the vulnerability repeatedly without triggering permanent security alerts
 - Completely undermine the security benefits of multi-factor authentication
 - Access sensitive user data and potentially pivot to other systems using compromised admin credentials
+
+- # PS - toughest lab in all the series. 
