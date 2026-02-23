@@ -14,7 +14,7 @@ The website contains a DOM-based XSS vulnerability in how it handles links dynam
 5. **Execution:** When a victim clicks the manipulated link, the injected JavaScript executes in their browser context.
 6. **Verification:** Confirmed successful script execution through observable behavior or browser developer tools.
 
-![Lab 05 Screenshot](lab5-screenshot.png)
+![Lab 05 Screenshot](screenshot.png)
 
 ## Technical Root Cause
 The vulnerability exists due to unsafe DOM manipulation with jQuery:

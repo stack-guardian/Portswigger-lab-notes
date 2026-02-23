@@ -14,7 +14,7 @@ The website contains a DOM-based XSS vulnerability in the search functionality. 
 5. **Execution:** When a victim visits the malicious URL, the payload executes in their browser context without ever being sent to the server.
 6. **Verification:** Confirmed successful script execution through browser developer tools or observable behavior (such as alert dialogs).
 
-![Lab 04 Screenshot](lab4-screenshot.png)
+![Lab 04 Screenshot](screenshot.png)
 
 ## Technical Root Cause
 The vulnerability stems from unsafe DOM manipulation practices:

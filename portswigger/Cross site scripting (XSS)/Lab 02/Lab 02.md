@@ -13,7 +13,7 @@ The website is vulnerable to stored cross-site scripting (XSS) in the comment se
 4. **Execution:** When any user (including admin) views the blog post with the malicious comment, the payload executes in their browser context.
 5. **Verification:** Observed the alert box triggering for all users viewing the compromised comment, proving persistent JavaScript injection.
 
-![Lab 02 Screenshot](lab2-screenshot.png)
+![Lab 02 Screenshot](screenshot.png)
 
 ## Technical Root Cause
 The server failed to implement protective measures against malicious JavaScript input in stored content. Specifically:

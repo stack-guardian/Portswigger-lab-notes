@@ -12,7 +12,7 @@ The website is vulnerable to reflected cross-site scripting (XSS). This was disc
 3. **Execution:** The payload was successfully executed in the browser context, confirming the vulnerability.
 4. **Verification:** Observed the alert box triggering, proving that arbitrary JavaScript can be injected and executed.
 
-![Lab 01 Screenshot](./lab1-screenshot.png)
+![Lab 01 Screenshot](screenshot.png)
 
 ## Technical Root Cause
 The server failed to implement protective measures against malicious JavaScript input. Specifically:

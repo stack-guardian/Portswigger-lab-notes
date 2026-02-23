@@ -13,7 +13,7 @@ The website is vulnerable to DOM-based cross-site scripting (XSS) through the se
 4. **Execution:** The payload executed when the page loaded and the JavaScript wrote the malicious input into the DOM.
 5. **Verification:** Observed the alert box triggering and the page displaying "0 search results for" followed by the injected payload, confirming the DOM XSS vulnerability.
 
-![Lab 03 Screenshot](./lab3-screenshot.png)
+![Lab 03 Screenshot](screenshot.png)
 
 ## Technical Root Cause
 The client-side JavaScript code failed to properly handle user-controllable input from the URL. Specifically:

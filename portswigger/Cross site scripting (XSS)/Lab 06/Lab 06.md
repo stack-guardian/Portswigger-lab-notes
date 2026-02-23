@@ -12,7 +12,7 @@ The website has a DOM XSS vulnerability in its jQuery selector. The issue is tha
 3. Injected a payload like `<img src=x onerror=print()>` in the hash part of the URL
 4. jQuery treated it as a selector and executed the JavaScript
 
-![Lab 06 Screenshot](./lab6-screenshot.png)
+![Lab 06 Screenshot](screenshot.png)
 
 ## Why It Happens
 The code trusts the URL hash blindly. jQuery's `$()` function can interpret certain inputs as HTML instead of CSS selectors, and when that happens, the browser executes any embedded scripts. No input validation, no filtering — just raw trust.
