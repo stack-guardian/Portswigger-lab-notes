@@ -1,4 +1,4 @@
-# Lab 1: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
+# Lab 01: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
 
 ## Category
 SQL Injection - WHERE Clause Exploitation (Hidden Data Retrieval)
@@ -14,7 +14,7 @@ The website's product filtering feature contains a SQL injection vulnerability i
 5. **Execution:** The injected payload causes the WHERE clause to always evaluate to true, returning all products.
 6. **Verification:** Confirmed successful data retrieval by observing all products displayed regardless of category selection.
 
-![Lab 1 Screenshot 1](screenshot1.png)
+![Lab 01 Screenshot 1](screenshot1.png)
 
 ## Technical Root Cause
 The vulnerability stems from improper handling of user input in SQL query construction:
