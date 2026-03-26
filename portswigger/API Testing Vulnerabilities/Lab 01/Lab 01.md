@@ -14,6 +14,9 @@ The application exposes undocumented API endpoints (`/api/user/{username}`) that
 1. **API Discovery**: Identified hidden API endpoint pattern `/api/user/{username}` through application documentation or JavaScript file analysis.
 
 2. **User Enumeration (GET)**: Sent GET request to `/api/user/carlos` which returned sensitive user information:
+
+   ![Lab 01 Screenshot 1 - User enumeration via GET](./screenshot1.png)
+
    ```
    GET /api/user/carlos HTTP/2
    Response: {"username": "carlos", "email": "carlos@carlos-montoya.net"}
@@ -24,6 +27,8 @@ The application exposes undocumented API endpoints (`/api/user/{username}`) that
    DELETE /api/user/carlos HTTP/2
    Response: {"status": "User deleted"}
    ```
+
+   ![Lab 01 Screenshot 2 - DELETE request removing user carlos](./screenshot2.png)
 
 4. **Verification**: Lab confirmed successful deletion of user 'carlos'.
 
@@ -77,13 +82,6 @@ This would be classified as **High/Critical** severity in a production environme
 - Burp Suite Professional (Repeater tab)
 - Chromium
 
-## Screenshot
-![API endpoint exploitation](./screenshot-1.png)
-*DELETE request successfully removing user carlos*
-
-![User enumeration via GET](./screenshot-2.png)
-*GET request leaking user information*
-
 ---
 
-*Writeup by vibhxr | 2-3 years deep in pentesting, still learning every day*
+*Writeup by vibhxr*

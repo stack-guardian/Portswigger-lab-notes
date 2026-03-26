@@ -42,6 +42,8 @@ This endpoint was:
 ### Step 4: Exploitation - Price Manipulation
 Sent a PATCH request to modify the product price:
 
+![Lab 02 Screenshot 1 - Price manipulation via PATCH request](./screenshot1.png)
+
 ```http
 PATCH /api/products/1/price HTTP/2
 Host: 0a6f00b903183d3d8234425700ce00a8.web-security-academy.net
@@ -72,6 +74,8 @@ After modifying the price:
 2. Proceeded to checkout
 3. Total price showed: **$0.00**
 4. Completed the purchase successfully
+
+![Lab 02 Screenshot 2 - Successful purchase at $0.00](./screenshot2.png)
 
 **Result:** "Congratulations, you solved the lab!" + "Your order is on its way!"
 
@@ -234,16 +238,6 @@ In a real e-commerce application, this could result in:
 - [PortSwigger: Business Logic Vulnerabilities](https://portswigger.net/web-security/logic-flaws)
 - [OWASP: Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
 - [PortSwigger Lab: Finding and exploiting an unused API endpoint](https://portswigger.net/web-security/api)
-
-## Screenshots
-
-### Figure 1: Modifying Product Price via API
-![Price manipulation via PATCH request](./screenshot-2-1.png)
-*Sending PATCH request to /api/products/1/price to set price to $0*
-
-### Figure 2: Successful Purchase at $0.00
-![Lab solved - purchased item for $0](./screenshot-2-2.png)
-*Successfully purchased the leather jacket for $0.00 after price manipulation*
 
 ---
 
