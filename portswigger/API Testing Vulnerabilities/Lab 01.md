@@ -1,5 +1,9 @@
 # Lab 01: Exploiting an API endpoint using documentation
 
+> **Topic**: API Testing Vulnerabilities  
+> **Lab Number**: 01  
+> **Platform**: PortSwigger Web Security Academy
+
 ## Category
 Broken Access Control / API Security
 
