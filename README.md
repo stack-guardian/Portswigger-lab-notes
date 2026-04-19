@@ -29,12 +29,12 @@ SSRF coverage is still in progress. The notes currently cover basic server-side 
 ```
 Portswigger-lab-notes/
 ├── portswigger/                        # All lab notes, organized by topic
-│   ├── SQL injection/                  # Labs 01-18
+│   ├── Access Control Vulnerabilities/ # Labs 01-13
+│   ├── API Testing Vulnerabilities/    # Labs 01-05
+│   ├── Authentication/                 # Labs 01-14
 │   ├── Cross site scripting (XSS)/     # Labs 01-31, includes personal notes
 │   ├── CSRF vulnerabilities/           # Labs 01-12
-│   ├── Access Control Vulnerabilities/ # Labs 01-13
-│   ├── Authentication/                 # Labs 01-14
-│   └── API Testing Vulnerabilities/    # Labs 01-05
+│   └── SQL injection/                  # Labs 01-18
 ├── README.md
 └── LICENSE
 ```
