@@ -94,6 +94,12 @@ GET /admin/delete?username=carlos HTTP/2
 
 Response: **Lab solved.**
 
+![/admin blocked — "Admin interface only available if logged in as a DontWannaCry user"](./screenshot1.png)
+
+![My account page showing stored email truncated to 255 chars ending in @dontwannacry.com](./screenshot2.png)
+
+![Lab solved — Congratulations banner confirmed](./screenshot3.png)
+
 ## Technical Root Cause
 
 ### Vulnerable Implementation (Pseudocode)
