@@ -14,8 +14,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | Business Logic Vulnerabilities | 12 | Complete |
 | SSRF | 7 | Complete |
 | API Testing | 5 | Complete |
-| Path Traversal | 2 | In Progress |
-| **Total** | **115** | |
+| Path Traversal | 3 | In Progress |
+| **Total** | **116** | |
 
 ## Approach
 
@@ -38,7 +38,7 @@ Portswigger-lab-notes/
 │   ├── Business Logic Vulnerabilities/ # Labs 01-12
 │   ├── Cross site scripting (XSS)/     # Labs 01-32, includes personal notes
 │   ├── CSRF vulnerabilities/           # Labs 01-12
-│   ├── Path traversal/                 # Labs 01-02
+│   ├── Path traversal/                 # Labs 01-03
 │   ├── SQL injection/                  # Labs 01-18
 │   └── SSRF vulnerabilities/           # Labs 01-07
 ├── README.md
