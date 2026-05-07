@@ -7,12 +7,14 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | Topic | Labs Solved | Status |
 |---|---|---|
 | SQL Injection | 18 | Complete |
-| Cross-Site Scripting | 31 | Complete |
+| Cross-Site Scripting | 32 | Complete |
 | CSRF | 12 | Complete |
 | Access Control | 13 | Complete |
 | Authentication | 14 | Complete |
-| SSRF | 5 | In Progress |
-| **Total** | **93+** | |
+| Business Logic Vulnerabilities | 12 | Complete |
+| SSRF | 7 | Complete |
+| API Testing | 5 | Complete |
+| **Total** | **113** | |
 
 ## Approach
 
@@ -22,7 +24,7 @@ Documentation focuses on the exploitation chain: what input the application trus
 
 The CSRF and authentication sections in particular are documented with an eye toward how these bugs appear in real applications — where developers implement partial mitigations that still leave exploitable gaps. Understanding why `SameSite=Lax` doesn't fully protect a login flow, for example, is more useful than knowing the bypass payload in isolation.
 
-SSRF coverage is still in progress. The notes currently cover basic server-side request forgery and blind SSRF with out-of-band detection. Advanced topics including SSRF via protocol smuggling and cloud metadata abuse will be added as I work through the remaining labs.
+SSRF coverage is complete. The notes cover basic server-side request forgery, blind SSRF with out-of-band detection, SSRF via open redirection, SSRF with blacklist/whitelist filter bypasses, and SSRF via protocol smuggling.
 
 ## Repository Structure
 
@@ -32,9 +34,11 @@ Portswigger-lab-notes/
 │   ├── Access Control Vulnerabilities/ # Labs 01-13
 │   ├── API Testing Vulnerabilities/    # Labs 01-05
 │   ├── Authentication/                 # Labs 01-14
-│   ├── Cross site scripting (XSS)/     # Labs 01-31, includes personal notes
+│   ├── Business Logic Vulnerabilities/ # Labs 01-12
+│   ├── Cross site scripting (XSS)/     # Labs 01-32, includes personal notes
 │   ├── CSRF vulnerabilities/           # Labs 01-12
-│   └── SQL injection/                  # Labs 01-18
+│   ├── SQL injection/                  # Labs 01-18
+│   └── SSRF vulnerabilities/           # Labs 01-07
 ├── README.md
 └── LICENSE
 ```
@@ -67,4 +71,4 @@ Portswigger-lab-notes/
 
 ---
 
-This is an active repository — I add notes as I work through new labs and occasionally revise older ones when I encounter the same bug class in a real context. The SSRF section will be completed over the next few weeks.
+This is an active repository — I add notes as I work through new labs and occasionally revise older ones when I encounter the same bug class in a real context.
