@@ -15,7 +15,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | SSRF | 7 | Complete |
 | API Testing | 5 | Complete |
 | Path Traversal | 6 | Complete |
-| **Total** | **119** | |
+| Race Conditions | 1 | In Progress |
+| **Total** | **120+** | |
 
 ## Approach
 
@@ -39,6 +40,7 @@ Portswigger-lab-notes/
 │   ├── Cross site scripting (XSS)/     # Labs 01-32, includes personal notes
 │   ├── CSRF vulnerabilities/           # Labs 01-12
 │   ├── Path traversal/                 # Labs 01-06
+│   ├── Race Conditions/                # Labs 01+
 │   ├── SQL injection/                  # Labs 01-18
 │   └── SSRF vulnerabilities/           # Labs 01-07
 ├── README.md
@@ -70,6 +72,8 @@ Portswigger-lab-notes/
 [CWE-287: Improper Authentication](https://cwe.mitre.org/data/definitions/287.html)
 
 [CWE-918: Server-Side Request Forgery](https://cwe.mitre.org/data/definitions/918.html)
+
+[CWE-362: Race Condition (Concurrent Execution)](https://cwe.mitre.org/data/definitions/362.html)
 
 ---
 
