@@ -16,7 +16,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | API Testing | 5 | Complete |
 | Path Traversal | 6 | Complete |
 | Race Conditions | 1 | In Progress |
-| **Total** | **120+** | |
+| XXE Injection | 1 | In Progress |
+| **Total** | **121+** | |
 
 ## Approach
 
@@ -43,6 +44,7 @@ Portswigger-lab-notes/
 │   ├── Race Conditions/                # Labs 01+
 │   ├── SQL injection/                  # Labs 01-18
 │   └── SSRF vulnerabilities/           # Labs 01-07
+│   └── XXE (XML External Entity) Injection/ # Labs 01+
 ├── README.md
 └── LICENSE
 ```
@@ -74,6 +76,8 @@ Portswigger-lab-notes/
 [CWE-918: Server-Side Request Forgery](https://cwe.mitre.org/data/definitions/918.html)
 
 [CWE-362: Race Condition (Concurrent Execution)](https://cwe.mitre.org/data/definitions/362.html)
+
+[CWE-611: XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)
 
 ---
 
