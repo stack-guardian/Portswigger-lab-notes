@@ -17,7 +17,7 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | Path Traversal | 6 | Complete |
 | Race Conditions | 1 | In Progress |
 | XXE Injection | 9 | Complete |
-| NoSQL Injection | 4 | In Progress |
+| NoSQL Injection | 4 | Complete |
 | **Total** | **131+** | |
 
 ## Approach
