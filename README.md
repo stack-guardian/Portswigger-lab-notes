@@ -16,8 +16,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | API Testing | 5 | Complete |
 | Path Traversal | 6 | Complete |
 | Race Conditions | 1 | In Progress |
-| XXE Injection | 8 | In Progress |
-| **Total** | **128+** | |
+| XXE Injection | 9 | Complete |
+| **Total** | **129+** | |
 
 ## Approach
 
