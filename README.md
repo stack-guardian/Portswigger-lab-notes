@@ -17,7 +17,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | Path Traversal | 6 | Complete |
 | Race Conditions | 1 | In Progress |
 | XXE Injection | 9 | Complete |
-| **Total** | **129+** | |
+| NoSQL Injection | 1 | In Progress |
+| **Total** | **130+** | |
 
 ## Approach
 
@@ -44,7 +45,8 @@ Portswigger-lab-notes/
 │   ├── Race Conditions/                # Labs 01+
 │   ├── SQL injection/                  # Labs 01-18
 │   └── SSRF vulnerabilities/           # Labs 01-07
-│   └── XXE (XML External Entity) Injection/ # Labs 01+
+│   └── XXE (XML External Entity) Injection/ # Labs 01-09
+│   └── NoSQL Injection/                # Labs 01+
 ├── README.md
 └── LICENSE
 ```
@@ -78,6 +80,8 @@ Portswigger-lab-notes/
 [CWE-362: Race Condition (Concurrent Execution)](https://cwe.mitre.org/data/definitions/362.html)
 
 [CWE-611: XML External Entity Reference](https://cwe.mitre.org/data/definitions/611.html)
+
+[CWE-943: Improper Neutralization of Special Elements in Data Query Logic (NoSQL Injection)](https://cwe.mitre.org/data/definitions/943.html)
 
 ---
 
