@@ -21,7 +21,7 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | File Upload Vulnerabilities | 7 | Complete |
 | Information Disclosure | 5 | Complete |
 | OS Command Injection | 5 | Complete |
-| CORS | 3 | In Progress |
+| CORS | 3 | Complete |
 | **Total** | **153** | |
 
 ## Approach
