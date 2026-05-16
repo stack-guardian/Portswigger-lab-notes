@@ -18,7 +18,11 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | Race Conditions | 1 | In Progress |
 | XXE Injection | 9 | Complete |
 | NoSQL Injection | 4 | Complete |
-| **Total** | **131+** | |
+| File Upload Vulnerabilities | 7 | Complete |
+| Information Disclosure | 5 | Complete |
+| OS Command Injection | 5 | Complete |
+| CORS | 3 | In Progress |
+| **Total** | **153** | |
 
 ## Approach
 
@@ -28,7 +32,7 @@ Documentation focuses on the exploitation chain: what input the application trus
 
 The CSRF and authentication sections in particular are documented with an eye toward how these bugs appear in real applications — where developers implement partial mitigations that still leave exploitable gaps. Understanding why `SameSite=Lax` doesn't fully protect a login flow, for example, is more useful than knowing the bypass payload in isolation.
 
-SSRF coverage is complete. The notes cover basic server-side request forgery, blind SSRF with out-of-band detection, SSRF via open redirection, SSRF with blacklist/whitelist filter bypasses, and SSRF via protocol smuggling.
+SSRF and CORS coverage is extensive. The notes cover basic server-side request forgery, blind SSRF, and various CORS misconfigurations including origin reflection, trusted null origin, and insecure protocol trust.
 
 ## Repository Structure
 
@@ -39,8 +43,12 @@ Portswigger-lab-notes/
 │   ├── API Testing Vulnerabilities/    # Labs 01-05
 │   ├── Authentication/                 # Labs 01-14
 │   ├── Business Logic Vulnerabilities/ # Labs 01-12
+│   ├── CORS Cross Origin Request Sharing/ # Labs 01-03
 │   ├── Cross site scripting (XSS)/     # Labs 01-32, includes personal notes
 │   ├── CSRF vulnerabilities/           # Labs 01-12
+│   ├── File upload vulnerabilities/    # Labs 01-07
+│   ├── Information disclosure/         # Labs 01-05
+│   ├── OS command injection/           # Labs 01-05
 │   ├── Path traversal/                 # Labs 01-06
 │   ├── Race Conditions/                # Labs 01+
 │   ├── SQL injection/                  # Labs 01-18
