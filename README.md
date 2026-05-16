@@ -22,8 +22,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | Information Disclosure | 5 | Complete |
 | OS Command Injection | 5 | Complete |
 | CORS | 3 | Complete |
-| Clickjacking | 4 | In Progress |
-| **Total** | **157** | |
+| Clickjacking | 5 | In Progress |
+| **Total** | **158** | |
 
 ## Approach
 
