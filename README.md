@@ -22,7 +22,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | Information Disclosure | 5 | Complete |
 | OS Command Injection | 5 | Complete |
 | CORS | 3 | Complete |
-| **Total** | **153** | |
+| Clickjacking | 1 | In Progress |
+| **Total** | **154** | |
 
 ## Approach
 
@@ -32,7 +33,7 @@ Documentation focuses on the exploitation chain: what input the application trus
 
 The CSRF and authentication sections in particular are documented with an eye toward how these bugs appear in real applications — where developers implement partial mitigations that still leave exploitable gaps. Understanding why `SameSite=Lax` doesn't fully protect a login flow, for example, is more useful than knowing the bypass payload in isolation.
 
-SSRF and CORS coverage is extensive. The notes cover basic server-side request forgery, blind SSRF, and various CORS misconfigurations including origin reflection, trusted null origin, and insecure protocol trust.
+SSRF, CORS, and Clickjacking coverage is extensive. The notes cover basic server-side request forgery, various CORS misconfigurations, and UI redressing techniques to bypass CSRF and other logic.
 
 ## Repository Structure
 
@@ -43,6 +44,7 @@ Portswigger-lab-notes/
 │   ├── API Testing Vulnerabilities/    # Labs 01-05
 │   ├── Authentication/                 # Labs 01-14
 │   ├── Business Logic Vulnerabilities/ # Labs 01-12
+│   ├── Clickjacking/                   # Labs 01+
 │   ├── CORS Cross Origin Request Sharing/ # Labs 01-03
 │   ├── Cross site scripting (XSS)/     # Labs 01-32, includes personal notes
 │   ├── CSRF vulnerabilities/           # Labs 01-12
