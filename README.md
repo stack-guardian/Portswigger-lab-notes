@@ -23,8 +23,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | OS Command Injection | 5 | Complete |
 | CORS | 3 | Complete |
 | Clickjacking | 5 | Complete |
-| Websockets | 2 | In Progress |
-| **Total** | **160** | |
+| Websockets | 3 | Complete |
+| **Total** | **161** | |
 
 ## Approach
 
@@ -58,7 +58,7 @@ Portswigger-lab-notes/
 │   └── SSRF vulnerabilities/           # Labs 01-07
 │   └── XXE (XML External Entity) Injection/ # Labs 01-09
 │   └── NoSQL Injection/                # Labs 01+
-│   └── Websockets/                     # Labs 01-02
+│   └── Websockets/                     # Labs 01-03
 ├── README.md
 └── LICENSE
 ```
