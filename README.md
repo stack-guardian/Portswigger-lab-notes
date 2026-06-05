@@ -17,7 +17,8 @@ This repository contains my working notes from PortSwigger Web Security Academy 
 | Path Traversal | 6 | Complete |
 | Race Conditions | 1 | In Progress |
 | XXE Injection | 9 | Complete |
-| NoSQL Injection | 4 | Complete |
+| NoSQL Injection | 3 | In Progress |
+| **picoCTF** | **1** | **Medium** |
 | File Upload Vulnerabilities | 7 | Complete |
 | Information Disclosure | 5 | Complete |
 | OS Command Injection | 5 | Complete |
